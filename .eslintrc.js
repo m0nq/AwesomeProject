@@ -8,8 +8,11 @@ module.exports = {
         singleQuote: true,
         trailingComma: 'none',
         semi: true,
-        bracketSameLine: true
+        bracketSameLine: true,
+        arrowParens: 'avoid',
+        singleAttributePerLine: false
       }
-    ]
+    ],
+    'import/no-duplicates': 'off'
   }
 };
