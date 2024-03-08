@@ -5,8 +5,9 @@ import { StyleSheet } from 'react-native';
 const ColorBox = ({ color, text }) => {
   return (
     <View style={[container, box, { backgroundColor: color }]}>
-      <Text
-        style={[boxText, { color: parseInt(color.replace('#', ''), 16) > 0xffffff / 1.1 ? 'black' : 'white' }]}>{text}: {color}</Text>
+      <Text style={[boxText, { color: parseInt(color.replace('#', ''), 16) > 0xffffff / 1.1 ? 'black' : 'white' }]}>
+        {text}: {color}
+      </Text>
     </View>
   );
 };

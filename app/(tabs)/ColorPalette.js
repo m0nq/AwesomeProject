@@ -1,10 +1,10 @@
+// import { useLocalSearchParams, useRouter } from 'expo-router';
+import { StyleSheet } from 'react-native';
 import { FlatList } from 'react-native';
-import { SafeAreaView } from 'react-native';
 import { Text } from 'react-native';
 import { View } from 'react-native';
-import { StyleSheet } from 'react-native';
 
-import ColorBox from '../Components/ColorBox';
+import ColorBox from '../../Components/ColorBox';
 
 const COLORS = [
   { colorName: 'Base03', hexCode: '#002b36' },
@@ -25,30 +25,29 @@ const COLORS = [
   { colorName: 'Green', hexCode: '#859900' }
 ];
 
-const App = () => {
+const ColorPalette = () => {
+  // const router = useRouter();
+  // const params = useLocalSearchParams();
+
   return (
-    <SafeAreaView>
-      <View style={container}>
-        <Text style={text}>Here are some boxes of different colors...</Text>
-        <FlatList style={container}
-          data={COLORS}
-          keyExtractor={item => item.colorName}
-          renderItem={({ item }) => <ColorBox color={item.hexCode} text={item.colorName} />}
-          listHeaderComponent={<Text style={text}>Solarized</Text>} />
-      </View>
-    </SafeAreaView>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <FlatList style={container}
+        data={COLORS}
+        keyExtractor={item => item.colorName}
+        renderItem={({ item }) => <ColorBox color={item.hexCode} text={item.colorName} />}
+        listHeaderComponent={<Text style={text}>Color Palette</Text>} />
+    </View>
   );
 };
 
 const { text, container } = StyleSheet.create({
   container: {
-    margin: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 10
+    padding: 10
   },
-  text: {
+  heading: {
     fontSize: 18,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginBottom: 10
   },
   cyan: {
     backgroundColor: '#2aa198'
@@ -64,4 +63,4 @@ const { text, container } = StyleSheet.create({
   }
 });
 
-export default App;
+export default ColorPalette;
