@@ -2,29 +2,32 @@ import { Text } from 'react-native';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-const ColorBox = ({ color, text }) => {
+const ColorBox = ({ hexCode, text }) => {
   return (
-    <View style={[container, box, { backgroundColor: color }]}>
-      <Text style={[boxText, { color: parseInt(color.replace('#', ''), 16) > 0xffffff / 1.1 ? 'black' : 'white' }]}>
-        {text}: {color}
+    <View style={[box, { backgroundColor: hexCode }]}>
+      <Text style={[boxText, { color: parseInt(hexCode?.replace('#', ''), 16) > 0xffffff / 1.1 ? 'black' : 'white' }]}>
+        {text}: {hexCode}
       </Text>
     </View>
   );
 };
 
-const { container, box, boxText } = StyleSheet.create({
-  container: {
-    margin: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 10
-  },
+const { box, boxText } = StyleSheet.create({
   box: {
+    padding: 10,
+    borderRadius: 3,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 1,
+    elevation: 2
   },
   boxText: {
-    color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   }
 });
 
