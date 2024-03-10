@@ -1,10 +1,15 @@
 import { Link } from 'expo-router';
+import { useContext } from 'react';
 import { Text } from 'react-native';
 import { Pressable } from 'react-native';
 import { FlatList } from 'react-native';
 import { StyleSheet } from 'react-native';
 
+import { ColorContext } from '../contexts/ColorContext';
+
 const PalettePreview = ({ palette }) => {
+  const { setColorPalette } = useContext(ColorContext);
+
   return (
     <>
       <Text style={heading}>{palette.paletteName}</Text>
@@ -14,11 +19,9 @@ const PalettePreview = ({ palette }) => {
           keyExtractor={({ item }, i) => item?.colorName || i}
           renderItem={({ item }) => {
             return (
-              <Link style={[color, { backgroundColor: item.hexCode }]}
-                href={{
-                  pathname: '/ColorPalette',
-                  params: { colorName: item?.colorName, colors: JSON.stringify(palette.colors) }
-                }}>
+              <Link onPress={() => setColorPalette(palette.colors)}
+                style={[color, { backgroundColor: item.hexCode }]}
+                href="/ColorPalette">
               </Link>
             );
           }} />

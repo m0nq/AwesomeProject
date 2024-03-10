@@ -34,8 +34,7 @@ const App = () => {
       keyExtractor={item => item.paletteName}
       renderItem={({ item }) => <PalettePreview palette={item} />}
       refreshing={isRefreshing}
-      onRefresh={handleRefresh}
-    />
+      onRefresh={handleRefresh} />
   );
 };
 
