@@ -12,20 +12,25 @@ const PalettePreview = ({ palette }) => {
 
   return (
     <>
-      <Text style={heading}>{palette.paletteName}</Text>
-      <Pressable>
-        <FlatList style={list}
-          data={palette.colors.slice(0, 5)}
-          keyExtractor={({ item }, i) => item?.colorName || i}
-          renderItem={({ item }) => {
-            return (
-              <Link onPress={() => setColorPalette(palette.colors)}
-                style={[color, { backgroundColor: item.hexCode }]}
-                href="/ColorPalette">
-              </Link>
-            );
-          }} />
-      </Pressable>
+      {palette.colors?.length ? (
+        <>
+          <Text style={heading}>{palette.paletteName}</Text>
+          <Pressable>
+            <FlatList style={list}
+              data={palette.colors.slice(0, 5)}
+              keyExtractor={({ item }, i) => item?.colorName || i}
+              renderItem={({ item }) => {
+                return (
+                  <Link onPress={() => setColorPalette(palette.colors)}
+                    style={[color, { backgroundColor: item.hexCode }]}
+                    href="/ColorPalette">
+                  </Link>
+                );
+              }} />
+          </Pressable>
+        </>
+      ) : null
+      }
     </>
   );
 };

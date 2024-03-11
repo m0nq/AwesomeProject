@@ -1,4 +1,5 @@
 import { Link } from 'expo-router';
+import { useContext } from 'react';
 import { useCallback } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -6,10 +7,18 @@ import { FlatList } from 'react-native';
 import { StyleSheet } from 'react-native';
 
 import PalettePreview from '../../Components/PalettePreview';
+import { NewColorContext } from '../../contexts/NewColorContext';
 
 const App = () => {
   const [colorPalettes, setColorPalettes] = useState([]);
   const [isRefreshing, setRefreshing] = useState(false);
+  const { newColorPalette } = useContext(NewColorContext);
+
+  useEffect(() => {
+    if (newColorPalette) {
+      setColorPalettes(prevState => [newColorPalette, ...prevState]);
+    }
+  }, [newColorPalette]);
 
   useEffect(() => {
     fetchColorPalette();
@@ -30,7 +39,9 @@ const App = () => {
 
   return (
     <>
-      <Link href="/modal">Present modal</Link>
+      <Link style={{ color: 'teal', fontSize: 24, alignSelf: 'center', marginTop: 5 }} href="/modal">
+        Add a color scheme...
+      </Link>
       <FlatList
         style={[container, list]}
         data={colorPalettes}
