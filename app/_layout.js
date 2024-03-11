@@ -4,12 +4,7 @@ export default function AppLayout() {
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
     </Stack>
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //     <Stack.Screen name="Home" component={Home} />
-    //     <Stack.Screen name="ColorPalette" component={ColorPalette} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
   );
 }

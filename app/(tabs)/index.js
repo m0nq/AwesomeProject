@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import { useCallback } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -28,13 +29,16 @@ const App = () => {
   }, []);
 
   return (
-    <FlatList
-      style={[container, list]}
-      data={colorPalettes}
-      keyExtractor={item => item.paletteName}
-      renderItem={({ item }) => <PalettePreview palette={item} />}
-      refreshing={isRefreshing}
-      onRefresh={handleRefresh} />
+    <>
+      <Link href="/modal">Present modal</Link>
+      <FlatList
+        style={[container, list]}
+        data={colorPalettes}
+        keyExtractor={item => item.paletteName}
+        renderItem={({ item }) => <PalettePreview palette={item} />}
+        refreshing={isRefreshing}
+        onRefresh={handleRefresh} />
+    </>
   );
 };
 
