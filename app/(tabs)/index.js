@@ -3,10 +3,11 @@ import { useContext } from 'react';
 import { useCallback } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { ScrollView } from 'react-native';
 import { FlatList } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-import PalettePreview from '../../Components/PalettePreview';
+import PalettePreview from '../../components/PalettePreview';
 import { NewColorContext } from '../../contexts/NewColorContext';
 
 const App = () => {
@@ -39,16 +40,18 @@ const App = () => {
 
   return (
     <>
-      <Link style={{ color: 'teal', fontSize: 24, alignSelf: 'center', marginTop: 5 }} href="/modal">
+      <Link style={{ color: 'teal', fontSize: 24, alignSelf: 'center', marginTop: 5 }} href="modal">
         Add a color scheme...
       </Link>
-      <FlatList
-        style={[container, list]}
-        data={colorPalettes}
-        keyExtractor={item => item.paletteName}
-        renderItem={({ item }) => <PalettePreview palette={item} />}
-        refreshing={isRefreshing}
-        onRefresh={handleRefresh} />
+      <ScrollView>
+        <FlatList
+          style={[container, list]}
+          data={colorPalettes}
+          keyExtractor={item => item.paletteName}
+          renderItem={({ item }) => <PalettePreview palette={item} />}
+          refreshing={isRefreshing}
+          onRefresh={handleRefresh} />
+      </ScrollView>
     </>
   );
 };

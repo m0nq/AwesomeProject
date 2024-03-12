@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { FlatList } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-import ColorBox from '../../Components/ColorBox';
+import ColorBox from '../../components/ColorBox';
 import { ColorContext } from '../../contexts/ColorContext';
 
 const ColorPalette = () => {
